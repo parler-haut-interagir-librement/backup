@@ -12,12 +12,12 @@ Every type under `Phil\Backup\`. "Implemented" means implemented and covered by 
 | `Database\CommandRunner` | `find($candidates)`, `run($command, $environment, $input)` | Port |
 | `Database\SqliteClient`, `MysqlClient`, `PostgresqlClient` | The client of each platform | Implemented |
 | `Encryption\BackupKey` | `fromBase64()`, `generate()`, `toBase64()`, `$bytes` | Implemented |
-| `Encryption\BackupCipher` | `encrypt($source, $target)`, `decrypt($source, $target)`; `EXTENSION` | Implemented |
+| `Encryption\BackupCipher` | `__construct($key, $tightenOpenDirectory = true)`; `encrypt($source, $target)`, `decrypt($source, $target)`, each through a temporary file readable by its owner alone; `EXTENSION` | Implemented |
 | `Media\MediaArchive` | `isEmpty()`, `write()`, `verify()`, `extract()`, `prune()` | Implemented |
-| `Media\TarWriter` | `create()`, `addDirectory()`, `addFile()`, `close()` | Implemented |
+| `Media\TarWriter` | `create()`, `addDirectory()`, `addFile()`, `close()`, `discard()` | Implemented |
 | `Media\TarReader` | `read($visitor)` | Implemented |
 | `Media\TarEntry` | `$name`, `$directory`, `$mode`, `$size`, `$modified` | Implemented |
-| `Storage\BackupDirectory` | `path()`, `newStem()`, `file()`, `temporary()`, `sets()`, `labelled()`, `latest()`, `set()`, `remove()`; `MEDIA`, `COPIES` | Implemented |
+| `Storage\BackupDirectory` | `path()`, `newStem()`, `file()`, `temporary()`, `publish()`, `sets()`, `labelled()`, `latest()`, `set()`, `remove()`; `MEDIA`, `COPIES` | Implemented |
 | `Storage\BackupSet` | `$stem`, `$time`, `$label`, `$database`, `$media`, `$copy`; `isLabelled()`, `files()`, `isEncrypted($file)`, `compare()` | Implemented |
 | `Rotation\RotationPolicy` | `$last`, `$daily`, `$weekly`, `$monthly`; `expired($sets)` | Implemented |
 | `Restore\RestoreGuard` | `checkEnvironment()`, `check()`; `VARIABLE` | Implemented |
